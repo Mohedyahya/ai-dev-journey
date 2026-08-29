@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agent Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f0f23;
+            color: white;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #00d4ff;
+        }
+        .chat-box {
+            background: #1a1a3e;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border: 1px solid #00d4ff;
+        }
+        .msg {
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user {
+            background: #0f3460;
+            margin-left: auto;
+            text-align: right;
+        }
+        .bot {
+            background: #e94560;
+            margin-right: auto;
+            text-align: left;
+        }
+        .form-box {
+            display: flex;
+            gap: 10px;
+        }
+        input[type=text] {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 15px 25px;
+            background: #00d4ff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .clear-btn {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #888;
+            text-decoration: none;
+        }
+        .mode {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Smart Agent v1.0</h1>
+    <p class="mode">Day 12: Flask + Ollama LLM</p>
+    
+    <div class="chat-box">
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="msg {{ msg.role }}">
+                    <b>{{ msg.role.upper() }}:</b> {{ msg.content }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align:center; color:#888;">Start a conversation...</p>
+        {% endif %}
+    </div>
+    
+    <form action="/chat" method="POST" class="form-box">
+        <input type="text" name="message" placeholder="Type your message..." required autofocus>
+        <button type="submit">Send</button>
+    </form>
+    
+    <a href="/clear" class="clear-btn">Clear Chat</a>
+</body>
+</html>
+
