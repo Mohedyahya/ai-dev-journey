@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agent - AI Writer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #00d4ff;
+        }
+        .form-box {
+            background: rgba(22, 33, 62, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #00d4ff;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: #0f0f23;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a1a2e;
+            cursor: pointer;
+            width: 100%;
+        }
+        .result {
+            background: #0f0f23;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #e94560;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .success {
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav a {
+            color: #e94560;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Article Writer</h1>
+    <p style="text-align:center; color:#888;">Day 14: Smart Agent Project</p>
+    
+    <div class="nav">
+        <a href="/">New Article</a>
+        <a href="/articles">Saved Articles</a>
+    </div>
+    
+    <div class="form-box">
+        <form action="/generate" method="POST">
+            <label>Topic / Keyword:</label>
+            <input type="text" name="topic" placeholder="e.g. Python, AI, Business..." required>
+            
+            <label>Tone:</label>
+            <select name="tone">
+                <option value="professional">Professional</option>
+                <option value="casual">Casual</option>
+                <option value="persuasive">Persuasive</option>
+            </select>
+            
+            <label>Length:</label>
+            <select name="length">
+                <option value="short">Short</option>
+                <option value="medium" selected>Medium</option>
+                <option value="long">Long</option>
+            </select>
+            
+            <button type="submit">Generate Article</button>
+        </form>
+    </div>
+    
+    {% if article %}
+    <div class="success">Article generated and saved!</div>
+    <div class="result">{{ article }}</div>
+    {% endif %}
+</body>
+</html>
+

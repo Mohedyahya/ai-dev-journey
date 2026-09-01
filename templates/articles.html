@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saved Articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: white;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        h1 { color: #00d4ff; text-align: center; }
+        .nav { text-align: center; margin-bottom: 20px; }
+        .nav a { color: #e94560; text-decoration: none; }
+        .article-item {
+            background: #16213e;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 3px solid #00d4ff;
+        }
+        .article-item small { color: #888; }
+    </style>
+</head>
+<body>
+    <h1>Saved Articles</h1>
+    <div class="nav"><a href="/">Back to Writer</a></div>
+    
+    {% if articles %}
+        {% for a in articles %}
+        <div class="article-item">
+            <b>{{ a.title }}</b><br>
+            <small>File: {{ a.file }}</small>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align:center; color:#888;">No articles yet.</p>
+    {% endif %}
+</body>
+</html>
+
