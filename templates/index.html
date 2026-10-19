@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agent - Day 11</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #00d4ff;
+        }
+        .box {
+            background: #16213e;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        .info {
+            color: #e94560;
+            font-size: 18px;
+        }
+        .skills {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .skills li {
+            color: #00d4ff;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Smart Agent v2.0</h1>
+        <p class="info">Day 11: Flask + HTML Templates</p>
+        <hr>
+        <p>Welcome, <b>{{ username }}</b>!</p>
+        <p>The agent is learning web design.</p>
+        
+        <h3>Agent Skills:</h3>
+        <ul class="skills">
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+        
+        <hr>
+        <p style="font-size: 12px; color: #888;">Built with Python + Flask + Jinja2</p>
+    </div>
+</body>
+</html>
+

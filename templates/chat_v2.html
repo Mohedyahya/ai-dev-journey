@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Agent v2.0 - Prompt Engineering</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 10px;
+            min-height: 90vh;
+        }
+        h1 {
+            text-align: center;
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+        .subtitle {
+            text-align: center;
+            color: #e94560;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .chat-box {
+            background: rgba(26, 26, 62, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            min-height: 350px;
+            max-height: 450px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border: 2px solid #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+        .msg {
+            padding: 14px 18px;
+            margin: 12px 0;
+            border-radius: 15px;
+            max-width: 85%;
+            word-wrap: break-word;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .user {
+            background: linear-gradient(135deg, #0f3460, #1a4a7a);
+            margin-left: auto;
+            text-align: right;
+            border-bottom-right-radius: 5px;
+        }
+        .bot {
+            background: linear-gradient(135deg, #e94560, #c73a54);
+            margin-right: auto;
+            text-align: left;
+            border-bottom-left-radius: 5px;
+        }
+        .form-box {
+            display: flex;
+            gap: 12px;
+        }
+        input[type=text] {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            background: #0f0f23;
+            color: white;
+            border: 1px solid #00d4ff;
+        }
+        button {
+            padding: 16px 28px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+        .clear-btn {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .clear-btn:hover {
+            color: #e94560;
+        }
+        .badge {
+            display: inline-block;
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Smart Agent v2.0 <span class="badge">PE</span></h1>
+    <p class="subtitle">Day 13: Prompt Engineering + Context Memory</p>
+    
+    <div class="chat-box">
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="msg {{ msg.role }}">
+                    <b>{{ msg.role.upper() }}:</b> {{ msg.content }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align:center; color:#888; margin-top:150px;">
+                Start a conversation with the engineered agent...
+            </p>
+        {% endif %}
+    </div>
+    
+    <form action="/chat" method="POST" class="form-box">
+        <input type="text" name="message" placeholder="Ask me anything..." required autofocus>
+        <button type="submit">Send</button>
+    </form>
+    
+    <a href="/clear" class="clear-btn">Clear Conversation</a>
+</body>
+</html>
+
